@@ -4,6 +4,15 @@ from time import time
 
 db = Database()
 
+# class Teacher(db.Entity):
+
+
+# class SchoolClass(db.Entity):
+#     name=Required(str)
+#     grade=Required(int)
+#     class_=Required(int)
+
+
 class TransactionDetail(db.Entity):
     detail = Required(str,500)
     money = Required(Decimal,10,2)
@@ -13,9 +22,7 @@ class TransactionDetail(db.Entity):
     @db_session
     def total(cls):
         return sum(td.money for td in cls)
-    
 
-        
 
 def connect_db(db:Database,db_connect:dict=None):
     db.bind(**db_connect)

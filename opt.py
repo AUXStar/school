@@ -1,4 +1,4 @@
-from models import TransactionDetail,connect_db
+from database.models import TransactionDetail,connect_db
 from pony.orm import db_session,select
 
 connect_db()
