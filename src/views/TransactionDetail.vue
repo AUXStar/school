@@ -3,12 +3,15 @@ export default {
     data() {
         
         return {
-            detail:{}
+            detail:{
+                
+            },
+            total:0
         }
     }
 }
 </script>
 
 <template>
-    <p>sdafasd</p>
+    <p>sdasdfsadfasd</p>
 </template>
