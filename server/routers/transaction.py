@@ -1,4 +1,4 @@
-from database.models import TransactionDetail
+from models.transaction_detail import TransactionDetail
 from pony.orm import select, desc, db_session
 from fastapi import APIRouter
 
