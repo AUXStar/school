@@ -4,9 +4,8 @@ from time import time
 
 from .db import db
 
-
-
 class TransactionDetail(db.Entity):
+    class_=Required("SchoolClass")
     detail = Required(str,500)
     money = Required(Decimal,10,2)
     timestamp = Required(int,default=lambda:int(time()))
@@ -15,3 +14,4 @@ class TransactionDetail(db.Entity):
     @db_session
     def total(cls):
         return sum(td.money for td in cls)
+

@@ -1,0 +1,1 @@
+db_connect=dict(provider='sqlite', filename='./database.sqlite', create_db=True)

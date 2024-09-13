@@ -35,7 +35,7 @@ class Instance:
         if not os.path.exists(instance_dir):
             shutil.copytree(file_dir(__file__, "instance_base"), instance_dir)
         self.instance_dir = os.path.abspath(instance_dir)
-        os.chdir(instance_dir)
+        os.chdir(self.instance_dir)
         globals()['CURRENT_INSTANCE'] = self
         try:
             self.config = self.instance_import('config')
