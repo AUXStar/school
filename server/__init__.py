@@ -17,6 +17,6 @@ def create_app(instance_dir=None,base_dir=None):
     from .routers import include_routers
     include_routers(app)
     @app.get('/s')
-    def s(user=Depends(permission_depends('usser'))):
+    def s(user=Depends(permission_depends('user'))):
         return {'a':'fine'}
     return app
