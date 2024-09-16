@@ -6,7 +6,7 @@ from .db import db
 
 
 class PermissionGroup(db.Entity):
-    name = Required(str, unique=True)
+    name = Required(str, unique=True, index=True)
     weight = Required(int)
     nodes = Set("PermissionNode")
     members = Set("User")

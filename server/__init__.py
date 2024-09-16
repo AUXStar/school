@@ -4,6 +4,8 @@ from utils.permission import permission_depends
 import sys
 import os
 
+from models import User
+
 
 from utils import database, instance_tools
 
@@ -16,7 +18,8 @@ def create_app(instance_dir=None,base_dir=None):
     app.add_middleware(SessionMiddleware,secret_key='asdf')
     from .routers import include_routers
     include_routers(app)
+
     @app.get('/s')
-    def s(user=Depends(permission_depends('user'))):
-        return {'a':'fine'}
+    def s(user:User=Depends(permission_depends('user'))):
+        return {'a':user.username}
     return app

@@ -5,14 +5,14 @@ from .db import db
 
 
 class User(db.Entity):
-    username = Required(str)
+    username = Required(str, index=True)
     password = Required(str)
     realname = Required(str)
     nickname = Optional(str)
     class_teacher = Optional(lambda: SchoolClass, reverse="teachers")
     class_student = Optional(lambda: SchoolClass, reverse="students")
 
-    permission_groups = Set("PermissionGroup")
+    permission_groups = Set("PermissionGroup", index=True)
 
     @classmethod
     def from_id(cls, uid=-1):

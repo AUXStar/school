@@ -5,13 +5,13 @@ from .permission_group import PermissionGroup
 
 
 class PermissionNode(db.Entity):
-    permission = Required(str)
+    permission = Required(str, index=True)
     value = Required(bool)
     owner = Required(PermissionGroup)
 
     @classmethod
     @db_session
-    def instance(cls, permission, value, owner):
+    def instance(cls, permission:str, value:bool, owner:PermissionGroup):
         result = cls.get(permission=permission, owner=owner)
         if result is None:
             if value is None:
