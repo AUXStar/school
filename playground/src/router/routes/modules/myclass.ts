@@ -8,7 +8,6 @@ const routes: RouteRecordRaw[] = [
     component: BasicLayout,
     meta: {
       icon: 'mdi:account-box-multiple-outline',
-      keepAlive: true,
       order: 100,
       title: $t('page.myClass.title'),
     },
@@ -23,7 +22,7 @@ const routes: RouteRecordRaw[] = [
         },
         name: 'Summary',
         path: '/my_class/summary',
-        component: () => import('#/views/my_class/summary.vue'),
+        component: () => import('#/views/my_class/summary/index.vue'),
       },
     ],
   },

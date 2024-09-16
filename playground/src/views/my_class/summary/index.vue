@@ -14,8 +14,6 @@ import {
   SvgDownloadIcon,
 } from '@vben/icons';
 
-// import { rTime } from '#/utils/dayjs';
-
 import AnalyticsTrends from './analytics-trends.vue';
 import AnalyticsVisits from './analytics-visits.vue';
 import AnalyticsVisitsData from './analytics-visits-data.vue';
@@ -25,17 +23,17 @@ import AnalyticsVisitsSource from './analytics-visits-source.vue';
 const overviewItems: AnalysisOverviewItem[] = [
   {
     icon: SvgCardIcon,
-    title: '过去10min平均心率',
-    totalTitle: '健康指数',
-    totalValue: 86,
-    value: 75,
+    title: '用户量',
+    totalTitle: '总用户量',
+    totalValue: 120_000,
+    value: 2000,
   },
   {
     icon: SvgCakeIcon,
-    title: '未完成任务',
-    totalTitle: '总任务量',
-    totalValue: 10,
-    value: 3,
+    title: '访问量',
+    totalTitle: '总访问量',
+    totalValue: 500_000,
+    value: 20_000,
   },
   {
     icon: SvgDownloadIcon,

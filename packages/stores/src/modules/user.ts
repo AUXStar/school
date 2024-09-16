@@ -1,27 +1,6 @@
-import { acceptHMRUpdate, defineStore } from 'pinia';
+import type { BasicUserInfo } from '@vben-core/typings';
 
-interface BasicUserInfo {
-  /**
-   * 头像
-   */
-  avatar: string;
-  /**
-   * 用户昵称
-   */
-  realName: string;
-  /**
-   * 用户角色
-   */
-  roles?: string[];
-  /**
-   * 用户id
-   */
-  userId: string;
-  /**
-   * 用户名
-   */
-  username: string;
-}
+import { acceptHMRUpdate, defineStore } from 'pinia';
 
 interface AccessState {
   /**
@@ -43,7 +22,7 @@ export const useUserStore = defineStore('core-user', {
       // 设置用户信息
       this.userInfo = userInfo;
       // 设置角色信息
-      const roles = userInfo?.roles ?? [];
+      const roles = userInfo?.permission_groups ?? [];
       this.setUserRoles(roles);
     },
     setUserRoles(roles: string[]) {
