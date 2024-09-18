@@ -4,8 +4,8 @@
 import { useAppConfig } from '@vben/hooks';
 import { preferences } from '@vben/preferences';
 import { errorMessageResponseInterceptor, RequestClient } from '@vben/request';
-
 import { message } from 'ant-design-vue';
+import type { AxiosError } from 'axios';
 
 const { apiURL } = useAppConfig(import.meta.env, import.meta.env.PROD);
 
@@ -36,6 +36,23 @@ function createRequestClient(baseURL: string) {
   client.addResponseInterceptor(
     errorMessageResponseInterceptor((msg: string) => message.error(msg)),
   );
+
+  // 错误处理增强
+  client.addResponseInterceptor({
+    rejected: (error: AxiosError) => {
+      if (error.response) {
+        // 服务器响应了错误状态码
+        message.error(`请求错误: ${error.response.status}`);
+      } else if (error.request) {
+        // 请求已经发出，但没有收到响应
+        message.error('网络错误，请检查您的网络连接');
+      } else {
+        // 在设置请求时发生了一些事情，触发了错误
+        message.error('请求配置错误');
+      }
+      return Promise.reject(error);
+    },
+  });
 
   return client;
 }

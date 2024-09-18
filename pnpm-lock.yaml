@@ -20,6 +20,9 @@ importers:
       '@changesets/cli':
         specifier: ^2.27.8
         version: 2.27.8
+      '@types/axios':
+        specifier: ^0.14.0
+        version: 0.14.0
       '@types/jsdom':
         specifier: ^21.1.7
         version: 21.1.7
@@ -3587,6 +3590,10 @@ packages:
 
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
+
+  '@types/axios@0.14.0':
+    resolution: {integrity: sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==}
+    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
 
   '@types/bintrees@1.0.6':
     resolution: {integrity: sha512-pZWT4Bz+tWwxlDspSjdoIza4PE5lbGI4Xvs3FZV/2v5m5SDA8LwNpU8AXxlndmARO7OaQ1Vf3zFenOsNMzaRkQ==}
@@ -11860,6 +11867,12 @@ snapshots:
       '@types/readdir-glob': 1.1.5
 
   '@types/argparse@1.0.38': {}
+
+  '@types/axios@0.14.0':
+    dependencies:
+      axios: 1.7.7
+    transitivePeerDependencies:
+      - debug
 
   '@types/bintrees@1.0.6': {}
 
