@@ -26,9 +26,7 @@ export async function loginApi(data: AuthApi.LoginParams) {
  * 退出登录
  */
 export async function logoutApi() {
-  return baseRequestClient.post('/user/logout', {
-    withCredentials: true,
-  });
+  return baseRequestClient.get('/user/logout');
 }
 
 /**

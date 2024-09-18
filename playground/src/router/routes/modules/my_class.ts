@@ -14,7 +14,6 @@ const routes: RouteRecordRaw[] = [
     name: 'MyClass',
     path: '/my_class',
     children: [
-      // dsf
       {
         meta: {
           icon: 'mdi:align-horizontal-left',
@@ -23,6 +22,25 @@ const routes: RouteRecordRaw[] = [
         name: 'Summary',
         path: '/my_class/summary',
         component: () => import('#/views/my_class/summary/index.vue'),
+      },
+      {
+        meta: {
+          icon: 'mdi:align-horizontal-left',
+          title: $t('page.myClass.application.title'),
+        },
+        name: 'Application',
+        path: '/my_class/application',
+        children: [
+          {
+            meta: {
+              icon: 'mdi:align-horizontal-left',
+              title: $t('page.myClass.application.leave.title'),
+            },
+            name: 'Leave',
+            path: '/my_class/application/leave',
+            component: () => import('#/views/my_class/application/leave.vue'),
+          },
+        ],
       },
     ],
   },

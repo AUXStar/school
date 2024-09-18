@@ -4,8 +4,8 @@ import type { NotificationItem } from '@vben/layouts';
 import { computed, ref } from 'vue';
 
 import { AuthenticationLoginExpiredModal } from '@vben/common-ui';
-import { VBEN_DOC_URL, VBEN_GITHUB_URL } from '@vben/constants';
-import { BookOpenText, CircleHelp, MdiGithub } from '@vben/icons';
+import { VBEN_GITHUB_URL } from '@vben/constants';
+import { CircleHelp } from '@vben/icons';
 import {
   BasicLayout,
   LockScreen,
@@ -20,36 +20,7 @@ import { $t } from '#/locales';
 import { useAuthStore } from '#/store';
 import LoginForm from '#/views/_core/authentication/login.vue';
 
-const notifications = ref<NotificationItem[]>([
-  {
-    avatar: 'https://avatar.vercel.sh/vercel.svg?text=VB',
-    date: '3小时前',
-    isRead: true,
-    message: '描述信息描述信息描述信息',
-    title: '收到了 14 份新周报',
-  },
-  {
-    avatar: 'https://avatar.vercel.sh/1',
-    date: '刚刚',
-    isRead: false,
-    message: '描述信息描述信息描述信息',
-    title: '朱偏右 回复了你',
-  },
-  {
-    avatar: 'https://avatar.vercel.sh/1',
-    date: '2024-01-01',
-    isRead: false,
-    message: '描述信息描述信息描述信息',
-    title: '曲丽丽 评论了你',
-  },
-  {
-    avatar: 'https://avatar.vercel.sh/satori',
-    date: '1天前',
-    isRead: false,
-    message: '描述信息描述信息描述信息',
-    title: '代办提醒',
-  },
-]);
+const notifications = ref<NotificationItem[]>([]);
 
 const userStore = useUserStore();
 const authStore = useAuthStore();
@@ -59,24 +30,6 @@ const showDot = computed(() =>
 );
 
 const menus = computed(() => [
-  {
-    handler: () => {
-      openWindow(VBEN_DOC_URL, {
-        target: '_blank',
-      });
-    },
-    icon: BookOpenText,
-    text: $t('widgets.document'),
-  },
-  {
-    handler: () => {
-      openWindow(VBEN_GITHUB_URL, {
-        target: '_blank',
-      });
-    },
-    icon: MdiGithub,
-    text: 'GitHub',
-  },
   {
     handler: () => {
       openWindow(`${VBEN_GITHUB_URL}/issues`, {
@@ -110,10 +63,10 @@ function handleMakeAll() {
     <template #user-dropdown>
       <UserDropdown
         :avatar
+        :description="userStore.userInfo?.nickname"
         :menus
-        :text="userStore.userInfo?.realName"
-        description="ann.vben@gmail.com"
-        tag-text="Pro"
+        :tag-text="userStore.userInfo?.username"
+        :text="userStore.userInfo?.realname"
         @logout="handleLogout"
       />
     </template>

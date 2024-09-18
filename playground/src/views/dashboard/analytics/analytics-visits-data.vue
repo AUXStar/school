@@ -14,27 +14,27 @@ onMounted(() => {
   renderEcharts({
     legend: {
       bottom: 0,
-      data: ['访问', '趋势'],
+      data: ['能力评价', '发展趋势'],
     },
     radar: {
       indicator: [
         {
-          name: '网页',
+          name: '语文',
         },
         {
-          name: '移动端',
+          name: '数学',
         },
         {
-          name: 'Ipad',
+          name: '英语',
         },
         {
-          name: '客户端',
+          name: '物理',
         },
         {
-          name: '第三方',
+          name: '化学',
         },
         {
-          name: '其它',
+          name: '生物',
         },
       ],
       radius: '60%',
@@ -54,14 +54,14 @@ onMounted(() => {
             itemStyle: {
               color: '#b6a2de',
             },
-            name: '访问',
+            name: '能力评价',
             value: [90, 50, 86, 40, 50, 20],
           },
           {
             itemStyle: {
               color: '#5ab1ef',
             },
-            name: '趋势',
+            name: '发展趋势',
             value: [70, 75, 70, 76, 20, 85],
           },
         ],

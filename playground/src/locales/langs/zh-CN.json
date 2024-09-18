@@ -5,6 +5,16 @@
       "summary": {
         "title": "概况总览"
       },
+      "application": {
+        "title": "申请表",
+        "leave": {
+          "title": "请假条",
+          "dates": "起止时间",
+          "from": "离校时间",
+          "to": "返校时间",
+          "reason": "请假原因"
+        }
+      },
       "transaction": {}
     },
     "demos": {

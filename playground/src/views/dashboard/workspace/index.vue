@@ -142,9 +142,15 @@ const todoItems = ref<WorkbenchTodoItem[]>([
 const trendItems: WorkbenchTrendItem[] = [
   {
     avatar: 'svg:avatar-1',
-    content: `在 <a>开源组</a> 创建了项目 <a>Vue</a>`,
+    content: `下午3:20 于多功能厅召开高一年级家长会`,
     date: '刚刚',
-    title: '威廉',
+    title: '校委会',
+  },
+  {
+    avatar: 'svg:avatar-2',
+    content: `<span style="color: red;">快交作业！！！</span>`,
+    date: '30min前',
+    title: '语文老师',
   },
 ];
 </script>
