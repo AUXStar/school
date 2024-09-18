@@ -115,7 +115,7 @@
     "terms": "条款",
     "agreeTip": "请同意隐私政策和条款",
     "goToLogin": "去登录",
-    "passwordStrength": "使用 8 个或更多字符，混合字��、数字和符号",
+    "passwordStrength": "使用 8 个或更多字符，混合字母、数字和符号",
     "forgetPassword": "忘记密码?",
     "forgetPasswordSubtitle": "输入您的电子邮件，我们将向您发送重置密码的连接",
     "emailTip": "请输入邮箱",
@@ -145,7 +145,7 @@
   },
   "preferences": {
     "title": "偏好设置",
-    "subtitle": "自定义偏好设�� & 实时预览",
+    "subtitle": "自定义偏好设置 & 实时预览",
     "resetTitle": "重置偏好设置",
     "resetTip": "数据有变化，点击可进行重置",
     "resetSuccess": "重置偏好设置成功",
@@ -254,7 +254,7 @@
       "grayMode": "灰色模式",
       "builtin": {
         "title": "内置主题",
-        "default": "���认",
+        "default": "默认",
         "violet": "紫罗兰",
         "pink": "樱花粉",
         "rose": "玫瑰红",

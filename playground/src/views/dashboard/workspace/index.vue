@@ -6,19 +6,19 @@ import type {
   WorkbenchTrendItem,
 } from '@vben/common-ui';
 
-import { ref, onMounted } from 'vue';
-import { useVirtualList } from '@vueuse/core';
+import { onMounted, ref } from 'vue';
 
 import {
   AnalysisChartCard,
   WorkbenchHeader,
   WorkbenchProject,
   WorkbenchQuickNav,
-  WorkbenchTodo,
   WorkbenchTrends,
 } from '@vben/common-ui';
 import { preferences } from '@vben/preferences';
 import { useUserStore } from '@vben/stores';
+
+import { useVirtualList } from '@vueuse/core';
 
 import AnalyticsVisitsSource from '../analytics/analytics-visits-source.vue';
 
@@ -141,7 +141,7 @@ const todoItems = ref<WorkbenchTodoItem[]>([
   },
 ]);
 
-const { list, containerProps, wrapperProps } = useVirtualList(todoItems, {
+const { containerProps, wrapperProps, list } = useVirtualList(todoItems, {
   itemHeight: 40,
   overscan: 10,
 });
@@ -188,7 +188,7 @@ const trendItems: WorkbenchTrendItem[] = [
           class="mt-5 lg:mt-0"
           title="快捷导航"
         />
-        <div v-bind="containerProps" style="height: 400px; overflow: auto;">
+        <div v-bind="containerProps" style="height: 400px; overflow: auto">
           <div v-bind="wrapperProps">
             <div v-for="item in list" :key="item.index">
               <!-- 渲染每个待办项 -->
