@@ -6,7 +6,8 @@ import type {
   WorkbenchTrendItem,
 } from '@vben/common-ui';
 
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useVirtualList } from '@vueuse/core';
 
 import {
   AnalysisChartCard,
@@ -139,6 +140,16 @@ const todoItems = ref<WorkbenchTodoItem[]>([
     title: '修复UI显示问题',
   },
 ]);
+
+const { list, containerProps, wrapperProps } = useVirtualList(todoItems, {
+  itemHeight: 40,
+  overscan: 10,
+});
+
+onMounted(() => {
+  // 可以在这里异步加载更多数据
+});
+
 const trendItems: WorkbenchTrendItem[] = [
   {
     avatar: 'svg:avatar-1',
@@ -177,7 +188,13 @@ const trendItems: WorkbenchTrendItem[] = [
           class="mt-5 lg:mt-0"
           title="快捷导航"
         />
-        <WorkbenchTodo :items="todoItems" class="mt-5" title="待办事项" />
+        <div v-bind="containerProps" style="height: 400px; overflow: auto;">
+          <div v-bind="wrapperProps">
+            <div v-for="item in list" :key="item.index">
+              <!-- 渲染每个待办项 -->
+            </div>
+          </div>
+        </div>
         <AnalysisChartCard class="mt-5" title="访问来源">
           <AnalyticsVisitsSource />
         </AnalysisChartCard>
