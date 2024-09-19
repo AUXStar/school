@@ -13,3 +13,4 @@ class SchoolClass(db.Entity):
     teachers = Set("Teacher")
     main_teacher = Required("Teacher",reverse='main_school_class')
     transactions = Set("TransactionDetail")
+    time_slot_table = Required("TimeSlotTable")

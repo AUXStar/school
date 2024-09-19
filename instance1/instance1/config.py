@@ -1,0 +1,1 @@
+db_connect=dict(provider='mysql', host='', user='', passwd='', db='',port=0)
