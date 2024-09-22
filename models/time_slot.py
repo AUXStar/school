@@ -21,13 +21,6 @@ class Activity(db.Entity):
     subject = Optional("Subject")
     detail = Optional(str)
 
-    @classmethod
-    def instance(cls, time_slot_time: int, time_slot_week: int,time_slot_table):
-        obj = cls.get(week_single=week_single, week_day=week_day)
-        if not obj:
-            obj = cls(week_single=week_single, week_day=week_day)
-        return obj
-
 
 class TimeSlotTable(db.Entity):  # 整个的表
     school_class = Required("SchoolClass")

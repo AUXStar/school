@@ -7,8 +7,9 @@ from .db import db
 
 class Subject(db.Entity):
     name = Required(str, unique=True, index=True)
-    teacher = Set("Teacher")
-    tag = Set(lambda:SubjectTag)
+    teacher = Required("Teacher")
+    tags = Set(lambda:SubjectTag)
+    activities = Set("Activity")
 
 
 class SubjectTag(db.Entity):
