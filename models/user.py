@@ -12,6 +12,9 @@ class User(db.Entity):
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
 
+    oa_from = Set('OA',reverse='from_user')
+    oa_to = Set('OA',reverse='to_user')
+
     permission_groups = Set("PermissionGroup", index=True)
 
     @classmethod
