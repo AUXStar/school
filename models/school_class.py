@@ -11,6 +11,6 @@ class SchoolClass(db.Entity):
     number = Required(int)
     students = Set("Student")
     teachers = Set("Teacher")
-    main_teacher = Required("Teacher",reverse='main_school_class')
+    class_teacher = Required("Teacher",reverse='main_school_class')
     transactions = Set("TransactionDetail")
     time_slot_table = Optional("TimeSlotTable")

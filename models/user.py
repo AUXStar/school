@@ -9,8 +9,11 @@ class User(db.Entity):
     password = Required(str)
     realname = Required(str)
     nickname = Optional(str)
+    id_card = Required(str)
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
+
+    gender = Required(int) #0male 1female
 
     oa_from = Set('OA',reverse='from_user')
     oa_to = Set('OA',reverse='to_user')

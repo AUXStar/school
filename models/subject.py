@@ -6,8 +6,8 @@ from .db import db
 
 
 class Subject(db.Entity):
-    name = Required(str, unique=True, index=True)
-    teacher = Required("Teacher")
+    name = Required(str, index=True)
+    teacher = Set("Teacher")
     tags = Set(lambda:SubjectTag)
     activities = Set("Activity")
 

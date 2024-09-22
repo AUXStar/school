@@ -1,4 +1,5 @@
 from .db import db
+from .oa import OA
 from .permission_group import PermissionGroup
 from .permission_node import PermissionNode
 from .role import Teacher,Student

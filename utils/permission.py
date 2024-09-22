@@ -62,9 +62,9 @@ def init_permission():
     PermissionNode.instance('gate.pass',True,teacher)
 
     parent = PermissionGroup.instance('parent',10)
-    PermissionNode.instance('',True,parent)
 
     student = PermissionGroup.instance('student',10)
     PermissionNode.instance('class.watch',True,student)
     PermissionNode.instance('gate.ask',True,student)
     
+    user.children = [teacher,parent,student]
