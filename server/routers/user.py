@@ -88,6 +88,5 @@ async def self_info(request:Request):
         return {
             "username": user.username,
             "realname": user.realname,
-            "nickname": user.nickname,
             "permission_groups": list(select(pg.name for pg in user.permission_groups)[:])
         }

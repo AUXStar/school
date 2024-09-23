@@ -3,6 +3,7 @@
     "conint",
     "fastapi",
     "pydantic",
-    "realname"
+    "realname",
+    "starlette"
   ]
 }

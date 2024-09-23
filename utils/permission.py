@@ -28,8 +28,7 @@ def permission_depends(
                     },
                 )
             return current_user
-
-    return closure_decorator
+    return Depends(closure_decorator)
 
 
 def check_permission(user: User, permission: str):

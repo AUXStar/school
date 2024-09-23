@@ -20,6 +20,6 @@ def create_app(instance_dir=None,base_dir=None):
     include_routers(app)
 
     @app.get('/s')
-    def s(user:User=Depends(permission_depends('user'))):
+    def s(user:User=permission_depends('user')):
         return {'a':user.username}
     return app

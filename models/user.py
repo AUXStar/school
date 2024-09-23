@@ -8,8 +8,9 @@ class User(db.Entity):
     username = Required(str, index=True)
     password = Required(str)
     realname = Required(str)
-    nickname = Optional(str)
     id_card = Required(str)
+    phone = Required(str, index=True, unique=True)
+    # email = Required(str, index=True, unique=True)
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
 
@@ -17,6 +18,9 @@ class User(db.Entity):
 
     oa_from = Set('OA',reverse='from_user')
     oa_to = Set('OA',reverse='to_user')
+
+    notice_from = Set('Notice',reverse='from_user')
+    notice_to = Set('Notice',reverse='to_user')
 
     permission_groups = Set("PermissionGroup", index=True)
 
