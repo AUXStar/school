@@ -9,7 +9,6 @@ type TabOption = BasicOption;
 
 interface BasicUserInfo {
   avatar: string;
-  nickname: string;
   permission_groups: string[];
   realname: string;
   username: string;
