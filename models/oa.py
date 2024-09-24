@@ -6,9 +6,9 @@ from .db import db
 
 
 
-class OA_type(Enum):
-    Leave=0
-    Money=1
+# class OA_type(Enum):
+#     Leave=0
+#     Money=1
 
 
 class OA(db.Entity):
@@ -16,7 +16,7 @@ class OA(db.Entity):
     details = Required(Json)
     from_user = Set('User')
     to_user = Set("User")
-    type = Required(OA_type)
+    type = Required(int)
     result = Required(int)
     
     #0 pending 1 adopt -1 reject

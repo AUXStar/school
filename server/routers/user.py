@@ -17,10 +17,24 @@ class RegisterData(BaseModel):
     )  # type: ignore
     password: constr(min_length=8, max_length=32)  # type: ignore
     realname: str
+    id_card: conint(le=100000_0000_00_00_0000,ge=10000_0000_00_00_0000_0)
+    phone: conint(le=100_0000_0000,ge=100_0000_0000_0)
 
     @classmethod
     @field_validator("password")
     def password_strength_test(cls, v: str) -> str:
+        ...
+        return v
+    
+    @classmethod
+    @field_validator("id_card")
+    def id_card_test(cls, v: str) -> str:
+        ...
+        return v
+    
+    @classmethod
+    @field_validator("phone")
+    def phone_test(cls, v: str) -> str:
         ...
         return v
 
@@ -44,6 +58,8 @@ async def register(data: RegisterData, request: Request):
             username=data.username,
             password=hashed_password,
             realname=data.realname,
+            id_card=data.id_card,
+            phone=data.phone,
             permission_groups=[user_group],
         )
         register_user.flush()

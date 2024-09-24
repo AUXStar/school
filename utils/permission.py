@@ -1,5 +1,4 @@
 from typing import Callable, TypeVar
-from functools import wraps
 
 from queue import Queue
 
