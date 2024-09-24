@@ -11,16 +11,15 @@ import { onMounted, ref } from 'vue';
 import {
   AnalysisChartCard,
   WorkbenchHeader,
-  WorkbenchProject,
   WorkbenchQuickNav,
+  WorkbenchTodo,
   WorkbenchTrends,
 } from '@vben/common-ui';
 import { preferences } from '@vben/preferences';
 import { useUserStore } from '@vben/stores';
 
-import { useVirtualList } from '@vueuse/core';
-
 import AnalyticsVisitsSource from '../analytics/analytics-visits-source.vue';
+import Hitokoto from './hitokoto.vue';
 
 const userStore = useUserStore();
 
@@ -141,11 +140,6 @@ const todoItems = ref<WorkbenchTodoItem[]>([
   },
 ]);
 
-const { containerProps, wrapperProps, list } = useVirtualList(todoItems, {
-  itemHeight: 40,
-  overscan: 10,
-});
-
 onMounted(() => {
   // 可以在这里异步加载更多数据
 });
@@ -180,7 +174,7 @@ const trendItems: WorkbenchTrendItem[] = [
     <div class="mt-5 flex flex-col lg:flex-row">
       <div class="mr-4 w-full lg:w-3/5">
         <WorkbenchTrends :items="trendItems" class="mt-5" title="最新动态" />
-        <WorkbenchProject :items="projectItems" class="mt-5" title="项目" />
+        <Hitokoto class="mt-5" title="项目" />
       </div>
       <div class="w-full lg:w-2/5">
         <WorkbenchQuickNav
@@ -188,13 +182,7 @@ const trendItems: WorkbenchTrendItem[] = [
           class="mt-5 lg:mt-0"
           title="快捷导航"
         />
-        <div v-bind="containerProps" style="height: 400px; overflow: auto">
-          <div v-bind="wrapperProps">
-            <div v-for="item in list" :key="item.index">
-              <!-- 渲染每个待办项 -->
-            </div>
-          </div>
-        </div>
+        <WorkbenchTodo :items="todoItems" class="mt-5" title="今日待办" />
         <AnalysisChartCard class="mt-5" title="访问来源">
           <AnalyticsVisitsSource />
         </AnalysisChartCard>

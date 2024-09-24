@@ -3,11 +3,6 @@ import type { AboutProps, DescriptionItem } from './about';
 
 import { h } from 'vue';
 
-import {
-  VBEN_DOC_URL,
-  VBEN_GITHUB_URL,
-  VBEN_PREVIEW_URL,
-} from '@vben/constants';
 import { VbenLink, VbenRenderContent } from '@vben-core/shadcn-ui';
 
 import { Page } from '../../components';
@@ -20,17 +15,16 @@ defineOptions({
 
 withDefaults(defineProps<Props>(), {
   description:
-    '是一个现代化开箱即用的中后台解决方案，采用最新的技术栈，包括 Vue 3.0、Vite、TailwindCSS 和 TypeScript 等前沿技术，代码规范严谨，提供丰富的配置选项，旨在为中大型项目的开发提供现成的开箱即用解决方案及丰富的示例，同时，它也是学习和深入前端技术的一个极佳示例。',
-  name: 'Vben Admin',
+    '宁静云校园，作为一款引领未来教育潮流的综合性智慧平台，深刻洞察并从根本上重塑了学生在校生活的全貌。该平台巧妙融合先进的人工智能大模型，对学生的日常行为与学习轨迹进行深度剖析与智能化引导，开创性地将科技力量注入教育的每一个细微之处。\n我们创新性地引入嵌入智能技术的手表、校服及校徽，集成了GPS与室内蓝牙精确定位系统，构筑起无微不至的安全守护网，实现对学生安全的全天候、无缝隙监控。同时，通过与校园摄像头系统的无缝对接及高级人脸识别技术，我们构建了一个既安全又高效的数字化校园环境，确保每位学生的福祉得到最大化的保障。\n在学习领域，宁静云校园通过精密的数据追踪与分析，为每位学生绘制个性化成长蓝图，精准把握学习动态，助力教育者量身定制教学方案。平台集课程资源、智能统计分析、个性化学习建议于一体，不仅赋能教师精准施教，更为家长开启了一扇全面了解孩子学习进程的窗口。\n更进一步，宁静云校园通过实时校内通讯体系、课程智能提醒、以及高效作业发布与审批流程，极大地提升了教育管理的流畅度与透明度。班费管理模块的加入，则让财务管理变得公开透明，促进了家校间的信任与合作。\n总之，宁静云校园以其前瞻性的设计理念与尖端科技的应用，构建了一个智慧共生的教育生态，不仅重新定义了校园管理的高效与便捷，更为每一位学子的卓越成长铺设了坚实的道路，开启了智慧教育的新纪元。',
+  name: '宁静云校园',
   title: '关于项目',
 });
 
 declare global {
   const __VBEN_ADMIN_METADATA__: {
-    authorEmail: string;
-    authorName: string;
-    authorUrl: string;
-    buildTime: string;
+    authorEmail: 'njzy4688@outlook.com';
+    authorName: '王靖元';
+    authorUrl: 'https://github.com/AUXStar/AUXStar';
     dependencies: Record<string, string>;
     description: string;
     devDependencies: Record<string, string>;
@@ -45,53 +39,13 @@ const {
   authorEmail,
   authorName,
   authorUrl,
-  buildTime,
   dependencies = {},
   devDependencies = {},
-  homepage,
-  license,
-  version,
   // vite inject-metadata 插件注入的全局变量
   // eslint-disable-next-line no-undef
 } = __VBEN_ADMIN_METADATA__ || {};
 
 const vbenDescriptionItems: DescriptionItem[] = [
-  {
-    content: version,
-    title: '版本号',
-  },
-  {
-    content: license,
-    title: '开源许可协议',
-  },
-  {
-    content: buildTime,
-    title: '最后构建时间',
-  },
-  {
-    content: h(VbenLink, { href: homepage }, { default: () => '点击查看' }),
-    title: '主页',
-  },
-  {
-    content: h(VbenLink, { href: VBEN_DOC_URL }, { default: () => '点击查看' }),
-    title: '文档地址',
-  },
-  {
-    content: h(
-      VbenLink,
-      { href: VBEN_PREVIEW_URL },
-      { default: () => '点击查看' },
-    ),
-    title: '预览地址',
-  },
-  {
-    content: h(
-      VbenLink,
-      { href: VBEN_GITHUB_URL },
-      { default: () => '点击查看' },
-    ),
-    title: 'Github',
-  },
   {
     content: h('div', [
       h(
@@ -124,7 +78,7 @@ const devDependenciesItems = Object.keys(devDependencies).map((key) => ({
   <Page :title="title">
     <template #description>
       <p class="text-foreground mt-3 text-sm leading-6">
-        <VbenLink :href="VBEN_GITHUB_URL">
+        <VbenLink href="/">
           {{ name }}
         </VbenLink>
         {{ description }}

@@ -18,6 +18,11 @@ interface AccessState {
  */
 export const useUserStore = defineStore('core-user', {
   actions: {
+    setHitokoto(hitokoto: string) {
+      if (this.userInfo) {
+        this.userInfo.hitokoto = hitokoto;
+      }
+    },
     setUserInfo(userInfo: BasicUserInfo | null) {
       // 设置用户信息
       this.userInfo = userInfo;

@@ -63,7 +63,7 @@ function handleMakeAll() {
     <template #user-dropdown>
       <UserDropdown
         :avatar
-        :description="userStore.userInfo?.nickname"
+        :description="userStore.userInfo?.hitokoto"
         :menus
         :tag-text="userStore.userInfo?.username"
         :text="userStore.userInfo?.realname"

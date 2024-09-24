@@ -11,6 +11,7 @@ import { notification } from 'ant-design-vue';
 import { defineStore } from 'pinia';
 
 import { getUserSelfInfoApi, loginApi, logoutApi } from '#/api';
+import { hitokotoApi } from '#/api/core/hitokoto';
 import { $t } from '#/locales';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -89,6 +90,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function fetchUserInfo() {
     let userInfo: null | UserInfo = null;
     userInfo = await getUserSelfInfoApi();
+    hitokotoApi();
     userStore.setUserInfo(userInfo);
     return userInfo;
   }

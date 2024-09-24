@@ -1,11 +1,13 @@
 /**
  * 该文件可自行根据业务逻辑进行调整
  */
+import type { AxiosError } from 'axios';
+
 import { useAppConfig } from '@vben/hooks';
 import { preferences } from '@vben/preferences';
 import { errorMessageResponseInterceptor, RequestClient } from '@vben/request';
+
 import { message } from 'ant-design-vue';
-import type { AxiosError } from 'axios';
 
 const { apiURL } = useAppConfig(import.meta.env, import.meta.env.PROD);
 
