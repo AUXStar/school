@@ -10,11 +10,11 @@ class User(db.Entity):
     realname = Required(str)
     id_card = Required(str)
     phone = Required(str, index=True, unique=True)
-    # email = Required(str, index=True, unique=True)
+    
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
 
-    gender = Required(int) #0male 1female
+    is_male = Required(bool) #0male 1female
 
     oa_from = Set('OA',reverse='from_user')
     oa_to = Set('OA',reverse='to_user')

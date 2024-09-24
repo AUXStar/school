@@ -17,26 +17,16 @@ class RegisterData(BaseModel):
     )  # type: ignore
     password: constr(min_length=8, max_length=32)  # type: ignore
     realname: str
-    id_card: str
-    phone: str
+    id_card: constr(pattern='(^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$)|(^[1-9]\\d{5}\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{2}$)')  # type: ignore
+    phone: conint(ge=100_0000_0000, lt=100_0000_0000_0)  # type: ignore
+    is_male: bool
 
     @classmethod
     @field_validator("password")
     def password_strength_test(cls, v: str) -> str:
         ...
         return v
-    
-    @classmethod
-    @field_validator("id_card")
-    def id_card_test(cls, v: str) -> str:
-        ...
-        return v
-    
-    @classmethod
-    @field_validator("phone")
-    def phone_test(cls, v: str) -> str:
-        ...
-        return v
+
 
 
 @api.post("/register")
@@ -59,8 +49,8 @@ async def register(data: RegisterData, request: Request):
             password=hashed_password,
             realname=data.realname,
             id_card=data.id_card,
-            phone=data.phone,
-            gender=1,
+            phone=str(data.phone),
+            is_male=data.is_male,
             permission_groups=[user_group],
         )
         register_user.flush()
@@ -99,11 +89,13 @@ async def logout(request: Request):
 
 
 @api.get("/self_info")
-async def self_info(request:Request):
+async def self_info(request: Request):
     with db_session:
         user = User.from_id(request.session.get("id", -1))
         return {
             "username": user.username,
             "realname": user.realname,
-            "permission_groups": list(select(pg.name for pg in user.permission_groups)[:])
+            "permission_groups": list(
+                select(pg.name for pg in user.permission_groups)[:]
+            ),
         }
