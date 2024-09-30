@@ -1,10 +1,14 @@
 <script lang="ts" setup>
+import { h } from 'vue';
+
 import { Page } from '@vben/common-ui';
 
 import { Button, Card, message } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter';
 import { $t } from '#/locales';
+
+import { VbenLink } from '../../../../../packages/@core/ui-kit/shadcn-ui/src/components';
 
 const [Form, formApi] = useVbenForm({
   // 所有表单项共用，可单独在表单内覆盖
@@ -58,13 +62,20 @@ const [Form, formApi] = useVbenForm({
       label: '',
       renderComponentContent: () => {
         return {
-          default: () => ['我已阅读并同意'],
+          default: () => [
+            '我已阅读并同意',
+            h(
+              VbenLink,
+              { class: 'mr-2', href: '/other/leave' },
+              { default: () => '请假管理条例办法' },
+            ),
+          ],
         };
       },
       rules: 'required',
     },
   ],
-  // 大屏一行显示3个，中屏一行显示2个，小屏一行显示1个
+  // 大屏一行显示2个，中屏一行显示1个，小屏一行显示1个
   wrapperClass: 'grid-cols-1 md:grid-cols-1 lg:grid-cols-2',
 });
 
@@ -76,8 +87,9 @@ function onSubmit(values: Record<string, any>) {
 </script>
 
 <template>
+  <a href="/"></a>
   <Page :title="$t('page.myClass.application.leave.title')">
-    <Card title="基础组件校验示例">
+    <Card title="请假表单">
       <template #extra>
         <Button @click="() => formApi.validate()">校验表单</Button>
         <Button class="mx-2" @click="() => formApi.resetValidate()">

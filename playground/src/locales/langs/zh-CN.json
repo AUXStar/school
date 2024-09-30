@@ -1,5 +1,10 @@
 {
   "page": {
+    "other": {
+      "title": "其他信息",
+      "about": "关于",
+      "leave": "学生请假管理条例"
+    },
     "myClass": {
       "title": "我的班级",
       "summary": {
