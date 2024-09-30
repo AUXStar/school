@@ -12,3 +12,5 @@ class Notice(db.Entity):
     to_user = Set("User")
     type = Required(int)
     result = Required(int)
+    create_timestamp = Required(int,default=lambda:int(time()))
+    result_timestamp = Required(int,default=0)

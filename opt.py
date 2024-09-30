@@ -1,11 +1,10 @@
-from models.transaction_detail import db,TransactionDetail,connect_db
+from models.transaction_detail import db
 from pony.orm import db_session,select
-from utils import instance_tools
+from utils import instance_tools,permission,database
 
-ins = instance_tools.Instance()
+ins = instance_tools.Instance('instance1')
 
 
-connect_db(db,ins.instance_import('config').db_connect)
+database.init_db()
 
-with db_session:
-    select((td.detail,td.money) for td in TransactionDetail).show()
+permission.init_permission()

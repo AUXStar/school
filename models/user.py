@@ -11,6 +11,8 @@ class User(db.Entity):
     id_card = Required(str)
     phone = Required(str, index=True, unique=True)
     
+    create_timestamp = Required(int,default=lambda:int(time()))
+    
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
 
