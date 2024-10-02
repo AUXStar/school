@@ -16,7 +16,7 @@ class User(db.Entity):
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
 
-    is_male = Required(bool) #0male 1female
+    is_male = Required(bool)
 
     oa_from = Set('OA',reverse='from_user')
     oa_to = Set('OA',reverse='to_user')
