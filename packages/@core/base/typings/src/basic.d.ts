@@ -9,7 +9,6 @@ type TabOption = BasicOption;
 
 interface BasicUserInfo {
   avatar: string;
-  hitokoto: string;
   is_male: boolean;
   permission_groups: string[];
   realname: string;

@@ -6,6 +6,7 @@ export { default as AuthenticationQrCodeLogin } from './qrcode-login.vue';
 export { default as AuthenticationRegister } from './register.vue';
 export type {
   AuthenticationProps,
-  LoginAndRegisterParams,
   LoginCodeParams,
+  LoginParams,
+  RegisterParams,
 } from './types';

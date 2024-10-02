@@ -1,3 +1,5 @@
+import type { RouteLocationRaw } from 'vue-router';
+
 import type { Component } from 'vue';
 
 interface AnalysisOverviewItem {
@@ -33,6 +35,7 @@ interface WorkbenchTodoItem {
 
 interface WorkbenchQuickNavItem {
   color?: string;
+  url?: RouteLocationRaw;
   icon: Component | string;
   title: string;
 }

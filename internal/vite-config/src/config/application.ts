@@ -43,7 +43,7 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
       nitroMockOptions: {},
       print: !isBuild,
       printInfoMap: {
-        'Vben Admin Docs': 'https://doc.vben.pro',
+        'project url': 'https://git.acwing.com/AUXStar/school',
       },
       pwa: true,
       pwaOptions: getDefaultPwaOptions(appTitle),

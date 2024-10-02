@@ -1,4 +1,4 @@
-import type { LoginAndRegisterParams } from '@vben/common-ui';
+import type { LoginParams, RegisterParams } from '@vben/common-ui';
 import type { UserInfo } from '@vben/types';
 
 import { ref } from 'vue';
@@ -10,8 +10,7 @@ import { resetAllStores, useAccessStore, useUserStore } from '@vben/stores';
 import { notification } from 'ant-design-vue';
 import { defineStore } from 'pinia';
 
-import { getUserSelfInfoApi, loginApi, logoutApi } from '#/api';
-import { hitokotoApi } from '#/api/core/hitokoto';
+import { getUserSelfInfoApi, loginApi, logoutApi, registerApi } from '#/api';
 import { $t } from '#/locales';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -28,7 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
    * @param onSuccess 成功之后的回调函数
    */
   async function authLogin(
-    params: LoginAndRegisterParams,
+    params: LoginParams,
     onSuccess?: () => Promise<void> | void,
   ) {
     // 异步处理用户登录操作并获取 accessToken
@@ -69,6 +68,48 @@ export const useAuthStore = defineStore('auth', () => {
       userInfo,
     };
   }
+  async function authRegister(
+    params: RegisterParams,
+    onSuccess?: () => Promise<void> | void,
+  ) {
+    // 异步处理用户登录操作并获取 accessToken
+    const userInfo: null | UserInfo = null;
+    try {
+      loginLoading.value = true;
+      const { id } = await registerApi(params);
+
+      // 如果成功获取到 accessToken
+      if (id !== -1) {
+        accessStore.setAccessToken(id.toString());
+        // 获取用户信息并存储到 accessStore 中
+        const userInfo = await fetchUserInfo();
+
+        userStore.setUserInfo(userInfo);
+
+        if (accessStore.loginExpired) {
+          accessStore.setLoginExpired(false);
+        } else {
+          onSuccess
+            ? await onSuccess?.()
+            : await router.push(DEFAULT_HOME_PATH);
+        }
+
+        if (userInfo?.realname) {
+          notification.success({
+            description: `${$t('authentication.registerSuccessDesc')}:${userInfo?.realname}`,
+            duration: 3,
+            message: $t('authentication.registerSuccess'),
+          });
+        }
+      }
+    } finally {
+      loginLoading.value = false;
+    }
+
+    return {
+      userInfo,
+    };
+  }
 
   async function logout(redirect: boolean = true) {
     await logoutApi();
@@ -90,7 +131,6 @@ export const useAuthStore = defineStore('auth', () => {
   async function fetchUserInfo() {
     let userInfo: null | UserInfo = null;
     userInfo = await getUserSelfInfoApi();
-    hitokotoApi();
     userStore.setUserInfo(userInfo);
     return userInfo;
   }
@@ -102,6 +142,7 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     $reset,
     authLogin,
+    authRegister,
     fetchUserInfo,
     loginLoading,
     logout,

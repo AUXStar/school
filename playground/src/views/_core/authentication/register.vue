@@ -1,12 +1,16 @@
 <script lang="ts" setup>
-import type { LoginAndRegisterParams, VbenFormSchema } from '@vben/common-ui';
+import type { RegisterParams, VbenFormSchema } from '@vben/common-ui';
 
 import { computed, h, ref } from 'vue';
 
 import { AuthenticationRegister, z } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 
+import { useAuthStore } from '#/store';
+
 defineOptions({ name: 'Register' });
+
+const authStore = useAuthStore();
 
 const loading = ref(false);
 
@@ -19,7 +23,62 @@ const formSchema = computed((): VbenFormSchema[] => {
       },
       fieldName: 'username',
       label: $t('authentication.username'),
-      rules: z.string().min(1, { message: $t('authentication.usernameTip') }),
+      rules: z.string().min(4, { message: $t('authentication.usernameTip') }),
+    },
+    {
+      component: 'VbenInput',
+      componentProps: {
+        placeholder: $t('authentication.realnameTip'),
+      },
+      fieldName: 'realname',
+      label: $t('authentication.realname'),
+      rules: z.string().min(1, { message: $t('authentication.realnameTip') }),
+    },
+    {
+      component: 'VbenInput',
+      componentProps: {
+        oninput: String.raw`this.value = this.value.replace(/[\Dx]/g, '')`,
+        placeholder: $t('authentication.id_cardTip'),
+      },
+      fieldName: 'id_card',
+      label: $t('authentication.id_card'),
+      rules: z
+        .string()
+        .min(18, { message: $t('authentication.id_cardTip') })
+        .max(18, { message: $t('authentication.id_cardTip') }),
+    },
+    {
+      component: 'VbenInput',
+      componentProps: {
+        oninput: String.raw`this.value = this.value.replace(/\D/g, '')`,
+        placeholder: $t('authentication.phoneTip'),
+      },
+      fieldName: 'phone',
+      label: $t('authentication.phone'),
+      rules: z.string().min(11, { message: $t('authentication.phoneTip') }),
+    },
+    {
+      component: 'VbenSelect',
+      componentProps: {
+        options: [
+          {
+            label: $t('authentication.genderMale'),
+            value: 'male',
+          },
+          {
+            label: $t('authentication.genderFemale'),
+            value: 'female',
+          },
+        ],
+        placeholder: $t('authentication.genderTip'),
+      },
+      fieldName: 'is_male',
+      rules: z
+        .enum(['male', 'female'])
+        .optional()
+        .refine((value) => value !== undefined, {
+          message: $t('authentication.genderTip'),
+        }),
     },
     {
       component: 'VbenInputPassword',
@@ -86,9 +145,9 @@ const formSchema = computed((): VbenFormSchema[] => {
   ];
 });
 
-function handleSubmit(value: LoginAndRegisterParams) {
-  // eslint-disable-next-line no-console
-  console.log('register submit:', value);
+function handleSubmit(value: RegisterParams) {
+  value.is_male = value.is_male === 'male';
+  authStore.authRegister(value);
 }
 </script>
 

@@ -95,10 +95,22 @@
     "pageDesc": "让明天更好",
     "loginSuccess": "登录成功",
     "loginSuccessDesc": "欢迎回来",
+    "registerSuccess": "注册成功",
+    "registerSuccessDesc": "欢迎您来到宁静云校园",
     "loginSubtitle": "请输入您的帐户信息以开始您今天的学习工作",
     "username": "账号",
+    "id_card": "身份证",
+    "realname": "真实姓名",
+    "phone": "电话",
+    "gender": "性别",
+    "genderMale": "男",
+    "genderFemale": "女",
     "password": "密码",
     "usernameTip": "请输入用户名",
+    "id_cardTip": "请输入18位身份证号码",
+    "realnameTip": "请输入真实姓名",
+    "phoneTip": "请输入11位电话号码",
+    "genderTip": "请选择性别",
     "passwordTip": "请输入密码",
     "passwordErrorTip": "密码错误",
     "rememberMe": "记住账号",
@@ -141,7 +153,8 @@
       "center": "居中",
       "alignLeft": "居左",
       "alignRight": "居右"
-    }
+    },
+    "selectAccount": "快速选择帐户"
   },
   "preferences": {
     "title": "偏好设置",

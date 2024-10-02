@@ -12,6 +12,7 @@ import {
   VbenSelect,
 } from '@vben-core/shadcn-ui';
 
+import { InputNumber } from 'ant-design-vue';
 import { defineRule } from 'vee-validate';
 
 const DEFAULT_MODEL_PROP_NAME = 'modelValue';
@@ -19,6 +20,7 @@ const DEFAULT_MODEL_PROP_NAME = 'modelValue';
 export const COMPONENT_MAP: Record<BaseFormComponentType, Component> = {
   DefaultResetActionButton: h(VbenButton, { size: 'sm', variant: 'outline' }),
   DefaultSubmitActionButton: h(VbenButton, { size: 'sm', variant: 'default' }),
+  InputNumber,
   VbenCheckbox,
   VbenInput,
   VbenInputPassword,

@@ -1,18 +1,16 @@
 {
-  "name": "@vben/playground",
-  "version": "5.3.0-beta.2",
-  "homepage": "https://vben.pro",
-  "bugs": "https://github.com/vbenjs/vue-vben-admin/issues",
+  "name": "njzy_cloud_school",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vbenjs/vue-vben-admin.git",
+    "url": "git+https://git.acwing.com/AUXStar/school.git",
     "directory": "playground"
   },
   "license": "MIT",
   "author": {
-    "name": "vben",
-    "email": "ann.vben@gmail.com",
-    "url": "https://github.com/anncwb"
+    "name": "宁静致远",
+    "email": "njzy4688@gmail.com",
+    "url": "https://github.com/AUXStar/AUXStar"
   },
   "type": "module",
   "scripts": {

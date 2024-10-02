@@ -63,9 +63,17 @@ interface AuthenticationProps {
   title?: string;
 }
 
-interface LoginAndRegisterParams {
+interface LoginParams {
   password: string;
   username: string;
+}
+interface RegisterParams {
+  password: string;
+  username: string;
+  id_card: string;
+  phone: string;
+  realname: string;
+  is_male: boolean | string;
 }
 
 interface LoginCodeParams {
@@ -74,7 +82,7 @@ interface LoginCodeParams {
 }
 
 interface LoginEmits {
-  submit: [LoginAndRegisterParams];
+  submit: [LoginParams];
 }
 
 interface LoginCodeEmits {
@@ -82,14 +90,15 @@ interface LoginCodeEmits {
 }
 
 interface RegisterEmits {
-  submit: [LoginAndRegisterParams];
+  submit: [RegisterParams];
 }
 
 export type {
   AuthenticationProps,
-  LoginAndRegisterParams,
   LoginCodeEmits,
   LoginCodeParams,
   LoginEmits,
+  LoginParams,
   RegisterEmits,
+  RegisterParams,
 };

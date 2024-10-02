@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { VbenFormSchema } from '@vben-core/form-ui';
 
-import type { RegisterEmits } from './types';
+import type { RegisterEmits, RegisterParams } from './types';
 
 import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
@@ -54,7 +54,7 @@ const router = useRouter();
 async function handleSubmit() {
   const { valid, values } = await validate();
   if (valid) {
-    emit('submit', values as { password: string; username: string });
+    emit('submit', values as RegisterParams);
   }
 }
 

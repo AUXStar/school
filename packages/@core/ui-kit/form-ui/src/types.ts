@@ -11,6 +11,7 @@ export type FormLayout = 'horizontal' | 'vertical';
 export type BaseFormComponentType =
   | 'DefaultResetActionButton'
   | 'DefaultSubmitActionButton'
+  | 'InputNumber'
   | 'VbenCheckbox'
   | 'VbenInput'
   | 'VbenInputPassword'

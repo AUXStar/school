@@ -557,6 +557,9 @@ importers:
       '@vueuse/core':
         specifier: ^11.0.3
         version: 11.0.3(vue@3.5.3(typescript@5.6.2))
+      ant-design-vue:
+        specifier: ^4.2.3
+        version: 4.2.3(vue@3.5.3(typescript@5.6.2))
       vee-validate:
         specifier: ^4.13.2
         version: 4.13.2(vue@3.5.3(typescript@5.6.2))
@@ -740,6 +743,9 @@ importers:
       '@vueuse/integrations':
         specifier: ^11.0.3
         version: 11.0.3(async-validator@4.2.5)(axios@1.7.7)(focus-trap@7.5.4)(nprogress@0.2.0)(qrcode@1.5.4)(sortablejs@1.15.3)(vue@3.5.3(typescript@5.6.2))
+      axios:
+        specifier: ^1.7.7
+        version: 1.7.7
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4

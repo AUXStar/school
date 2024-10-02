@@ -1,3 +1,4 @@
+import type { RegisterParams } from '@vben/common-ui';
 import type { UserInfo } from '@vben/types';
 
 import { baseRequestClient, requestClient } from '#/api/request';
@@ -20,6 +21,13 @@ export namespace AuthApi {
  */
 export async function loginApi(data: AuthApi.LoginParams) {
   return requestClient.post<AuthApi.LoginResult>('/user/login', data);
+}
+
+/**
+ * 注册
+ */
+export async function registerApi(data: RegisterParams) {
+  return requestClient.post<AuthApi.LoginResult>('/user/register', data);
 }
 
 /**

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type {
-  WorkbenchProjectItem,
   WorkbenchQuickNavItem,
   WorkbenchTodoItem,
   WorkbenchTrendItem,
@@ -10,6 +9,7 @@ import { onMounted, ref } from 'vue';
 
 import {
   AnalysisChartCard,
+  Hitokoto,
   WorkbenchHeader,
   WorkbenchQuickNav,
   WorkbenchTodo,
@@ -19,71 +19,25 @@ import { preferences } from '@vben/preferences';
 import { useUserStore } from '@vben/stores';
 
 import AnalyticsVisitsSource from '../analytics/analytics-visits-source.vue';
-import Hitokoto from './hitokoto.vue';
 
 const userStore = useUserStore();
-
-const projectItems: WorkbenchProjectItem[] = [
-  {
-    color: '',
-    content: '不要等待机会，而要创造机会。',
-    date: '2021-04-01',
-    group: '开源组',
-    icon: 'carbon:logo-github',
-    title: 'Github',
-  },
-  {
-    color: '#3fb27f',
-    content: '现在的你决定将来的你。',
-    date: '2021-04-01',
-    group: '算法组',
-    icon: 'ion:logo-vue',
-    title: 'Vue',
-  },
-  {
-    color: '#e18525',
-    content: '没有什么才能比努力更重要。',
-    date: '2021-04-01',
-    group: '上班摸鱼',
-    icon: 'ion:logo-html5',
-    title: 'Html5',
-  },
-  {
-    color: '#bf0c2c',
-    content: '热情和欲望可以突破一切难关。',
-    date: '2021-04-01',
-    group: 'UI',
-    icon: 'ion:logo-angular',
-    title: 'Angular',
-  },
-  {
-    color: '#00d8ff',
-    content: '健康的身体是实现目标的基石。',
-    date: '2021-04-01',
-    group: '技术牛',
-    icon: 'bx:bxl-react',
-    title: 'React',
-  },
-  {
-    color: '#EBD94E',
-    content: '路是走出来的，而不是空想出来的。',
-    date: '2021-04-01',
-    group: '架构组',
-    icon: 'ion:logo-javascript',
-    title: 'Js',
-  },
-];
 
 const quickNavItems: WorkbenchQuickNavItem[] = [
   {
     color: '#1fdaca',
     icon: 'ion:home-outline',
     title: '首页',
+    url: {
+      name: 'Workspace',
+    },
   },
   {
     color: '#bf0c2c',
-    icon: 'ion:grid-outline',
-    title: '仪表盘',
+    icon: 'ion:bar-chart-outline',
+    title: '数据分析中心',
+    url: {
+      name: 'Analytics',
+    },
   },
   {
     color: '#e18525',
@@ -102,7 +56,7 @@ const quickNavItems: WorkbenchQuickNavItem[] = [
   },
   {
     color: '#00d8ff',
-    icon: 'ion:bar-chart-outline',
+    icon: 'ion:grid-outline',
     title: '图表',
   },
 ];
@@ -174,7 +128,7 @@ const trendItems: WorkbenchTrendItem[] = [
     <div class="mt-5 flex flex-col lg:flex-row">
       <div class="mr-4 w-full lg:w-3/5">
         <WorkbenchTrends :items="trendItems" class="mt-5" title="最新动态" />
-        <Hitokoto class="mt-5" title="项目" />
+        <WorkbenchTodo :items="todoItems" class="mt-5" title="今日待办" />
       </div>
       <div class="w-full lg:w-2/5">
         <WorkbenchQuickNav
@@ -182,8 +136,8 @@ const trendItems: WorkbenchTrendItem[] = [
           class="mt-5 lg:mt-0"
           title="快捷导航"
         />
-        <WorkbenchTodo :items="todoItems" class="mt-5" title="今日待办" />
-        <AnalysisChartCard class="mt-5" title="访问来源">
+        <Hitokoto class="mt-5" title="今日一言" />
+        <AnalysisChartCard class="mt-5" title="今日访问">
           <AnalyticsVisitsSource />
         </AnalysisChartCard>
       </div>

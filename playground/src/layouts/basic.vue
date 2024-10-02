@@ -3,7 +3,7 @@ import type { NotificationItem } from '@vben/layouts';
 
 import { computed, ref } from 'vue';
 
-import { AuthenticationLoginExpiredModal } from '@vben/common-ui';
+import { AuthenticationLoginExpiredModal, hitokoto_ref } from '@vben/common-ui';
 import { VBEN_GITHUB_URL } from '@vben/constants';
 import { CircleHelp } from '@vben/icons';
 import {
@@ -63,7 +63,7 @@ function handleMakeAll() {
     <template #user-dropdown>
       <UserDropdown
         :avatar
-        :description="userStore.userInfo?.hitokoto"
+        :description="hitokoto_ref?.hitokoto"
         :menus
         :tag-text="userStore.userInfo?.username"
         :text="userStore.userInfo?.realname"
