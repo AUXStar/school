@@ -37,28 +37,32 @@ onMounted(refresh_hitokoto);
       </CardTitle>
     </CardHeader>
     <CardContent class="flex flex-wrap p-5 pt-0">
-      <div class="mx-auto w-full max-w-screen-md px-6">
+      <div class="mx-auto w-full max-w-screen-md px-0">
         <h1 class="relative mb-4 text-3xl font-bold">
-          <span
-            class="absolute left-0 top-0 -translate-y-1/2 transform px-2 text-gray-500 dark:text-gray-400"
-          >
-            『
-          </span>
-          <p
-            class="m-6 text-center text-gray-900 before:absolute before:left-1/2 before:top-0 before:-translate-x-1/2 dark:text-white"
-          >
-            {{ hitokoto_ref?.hitokoto || '行至水穷处，坐看云起时。' }}
-          </p>
-          <span
-            class="absolute bottom-1/2 right-0 translate-y-1/2 transform px-2 text-gray-500 dark:text-gray-400"
-          >
-            』
-          </span>
+          <div class="flex flex-col items-center">
+            <span class="ml-[-5%] self-start text-gray-500 dark:text-gray-400">
+              『
+            </span>
+            <p
+              class="m-0 mt-2 px-6 text-center text-gray-900 before:absolute before:left-1/2 before:top-0 before:-translate-x-1/2 dark:text-white"
+            >
+              {{ hitokoto_ref?.hitokoto || '行至水穷处，坐看云起时。' }}
+            </p>
+            <span class="mr-[-5%] self-end text-gray-500 dark:text-gray-400"> 』 </span>
+          </div>
           <div
             class="mt-1 block text-right text-sm text-gray-500 dark:text-gray-400"
           >
-            - {{ hitokoto_ref?.from_who || '王维' }} ·
-            {{ hitokoto_ref?.from || '《终南别业》' }}
+            -&nbsp;
+            <span
+              v-if="
+                (hitokoto_ref?.from_who && hitokoto_ref?.from) ||
+                !hitokoto_ref?.from
+              "
+            >
+              {{ hitokoto_ref?.from_who || '王维' }}&nbsp;·&nbsp;
+            </span>
+            《{{ hitokoto_ref?.from || '终南别业' }}》
           </div>
         </h1>
       </div>
