@@ -37,7 +37,7 @@ const formSchema = computed((): VbenFormSchema[] => {
     {
       component: 'VbenInput',
       componentProps: {
-        oninput: String.raw`this.value = this.value.replace(/[\Dx]/g, '')`,
+        oninput: String.raw`this.value = this.value.replace(/[^0-9X]/g, '').replace(/^(.{18}).*$/, '$1')`,
         placeholder: $t('authentication.id_cardTip'),
       },
       fieldName: 'id_card',
