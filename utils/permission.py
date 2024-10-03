@@ -62,6 +62,7 @@ def init_permission():
     parent = PermissionGroup.instance('parent',10)
 
     student = PermissionGroup.instance('student',10)
+    PermissionNode.instance('oa.create',True,student)
     PermissionNode.instance('class.watch',True,student)
     PermissionNode.instance('gate.ask',True,student)
     

@@ -11,7 +11,7 @@ from models.user import User
 api = APIRouter(prefix="/oa")
 
 
-class OALeave(BaseModel):
+class OADetailLeave(BaseModel):
     date_from:date
     date_to:date
     time_from:time
@@ -35,11 +35,11 @@ def summary(data:Summary,user:User=permission_depends("user")):
 
 class SubmitOA(BaseModel):
     name:constr(max_length=20)  # type: ignore
-    details:constr
+    detail:OADetailLeave
 
 
-@api.get("/summary")
-def summary(data:Summary,user:User=permission_depends("user")):
+@api.get("/submit")
+def submit(data:SubmitOA,user:User=permission_depends("oa.create")):
     with db_session:
         query = select(oa for oa in user.oa_to)
         query = query.sort_by(lambda oa: desc(oa.create_timestamp))
