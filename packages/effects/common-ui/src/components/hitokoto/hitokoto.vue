@@ -48,7 +48,9 @@ onMounted(refresh_hitokoto);
             >
               {{ hitokoto_ref?.hitokoto || '行至水穷处，坐看云起时。' }}
             </p>
-            <span class="mr-[-5%] self-end text-gray-500 dark:text-gray-400"> 』 </span>
+            <span class="mr-[-5%] self-end text-gray-500 dark:text-gray-400">
+              』
+            </span>
           </div>
           <div
             class="mt-1 block text-right text-sm text-gray-500 dark:text-gray-400"
