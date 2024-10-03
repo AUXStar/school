@@ -9,6 +9,8 @@ import {
 } from '@vben/common-ui';
 import { SvgBellIcon, SvgCakeIcon, SvgCardIcon } from '@vben/icons';
 
+import { MapContainer } from '#/map_utils';
+
 import AnalyticsTrends from './analytics-trends.vue';
 import AnalyticsVisits from './analytics-visits.vue';
 import AnalyticsVisitsData from './analytics-visits-data.vue';
@@ -53,6 +55,7 @@ const chartTabs: TabOption[] = [
 
 <template>
   <div class="p-5">
+    <MapContainer />
     <AnalysisOverview :items="overviewItems" />
     <AnalysisChartsTabs :tabs="chartTabs" class="mt-5">
       <template #trends>

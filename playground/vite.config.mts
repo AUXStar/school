@@ -9,7 +9,7 @@ export default defineConfig(async () => {
           '/api': {
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/api/, ''),
-            target: 'http://192.168.111.100:80',
+            target: 'http://192.168.111.115:8000',
             ws: true,
           },
         },

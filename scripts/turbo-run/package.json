@@ -1,5 +1,5 @@
 {
-  "name": "turbo-run",
+  "name": "@vben/turbo-run",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
