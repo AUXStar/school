@@ -154,7 +154,18 @@
       "alignLeft": "居左",
       "alignRight": "居右"
     },
-    "selectAccount": "快速选择帐户"
+    "selectAccount": "快速选择帐户",
+    "usernameErrorTip": "用户名格式不正确，至少4个字符",
+    "realnameErrorTip": "真实姓名不能为空",
+    "id_cardErrorTip": "身份证号码格式不正确，必须为18位",
+    "phoneErrorTip": "电话号码格式不正确，必须为11位",
+    "genderErrorTip": "请选择性别",
+    "passwordErrorTip": "密码格式不正确，至少8个字符",
+    "confirmPasswordErrorTip": "两次输入的密码不一致",
+    "agreePolicyErrorTip": "请同意隐私政策和条款",
+    "registerError": "注册失败，请重试",
+    "loginError": "登录失败，请检查用户名和密码",
+    "realnameChineseErrorTip": "真实姓名必须为中文字符"
   },
   "preferences": {
     "title": "偏好设置",

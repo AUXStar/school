@@ -5,6 +5,8 @@ import { computed, ref } from 'vue';
 
 import { AuthenticationCodeLogin, z } from '@vben/common-ui';
 import { $t } from '@vben/locales';
+import { authStore } from '@vben/auth-store';
+import { notification } from '@vben/notification';
 
 defineOptions({ name: 'CodeLogin' });
 
@@ -49,9 +51,15 @@ const formSchema = computed((): VbenFormSchema[] => {
  * Asynchronously handle the login process
  * @param values 登录表单数据
  */
-async function handleLogin(values: LoginCodeParams) {
-  // eslint-disable-next-line no-console
-  console.log(values);
+async function handleLogin(params: LoginCodeParams) {
+    try {
+        await authStore.authLogin(params);
+    } catch (error) {
+        notification.error({
+            message: $t('authentication.loginError'),
+            duration: 3,
+        });
+    }
 }
 </script>
 

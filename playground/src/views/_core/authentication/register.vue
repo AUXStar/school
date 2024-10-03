@@ -23,7 +23,7 @@ const formSchema = computed((): VbenFormSchema[] => {
       },
       fieldName: 'username',
       label: $t('authentication.username'),
-      rules: z.string().min(4, { message: $t('authentication.usernameTip') }),
+      rules: z.string().min(4, { message: $t('authentication.usernameErrorTip') }),
     },
     {
       component: 'VbenInput',
@@ -32,7 +32,12 @@ const formSchema = computed((): VbenFormSchema[] => {
       },
       fieldName: 'realname',
       label: $t('authentication.realname'),
-      rules: z.string().min(1, { message: $t('authentication.realnameTip') }),
+      rules: z
+        .string()
+        .min(1, { message: $t('authentication.realnameErrorTip') })
+        .refine((value) => /^[\u4e00-\u9fa5]+$/.test(value), {
+          message: $t('authentication.realnameChineseErrorTip'),
+        }),
     },
     {
       component: 'VbenInput',
@@ -44,8 +49,8 @@ const formSchema = computed((): VbenFormSchema[] => {
       label: $t('authentication.id_card'),
       rules: z
         .string()
-        .min(18, { message: $t('authentication.id_cardTip') })
-        .max(18, { message: $t('authentication.id_cardTip') }),
+        .min(18, { message: $t('authentication.id_cardErrorTip') })
+        .max(18, { message: $t('authentication.id_cardErrorTip') }),
     },
     {
       component: 'VbenInput',
@@ -55,7 +60,7 @@ const formSchema = computed((): VbenFormSchema[] => {
       },
       fieldName: 'phone',
       label: $t('authentication.phone'),
-      rules: z.string().min(11, { message: $t('authentication.phoneTip') }),
+      rules: z.string().min(11, { message: $t('authentication.phoneErrorTip') }),
     },
     {
       component: 'VbenSelect',
@@ -77,7 +82,7 @@ const formSchema = computed((): VbenFormSchema[] => {
         .enum(['male', 'female'])
         .optional()
         .refine((value) => value !== undefined, {
-          message: $t('authentication.genderTip'),
+          message: $t('authentication.genderErrorTip'),
         }),
     },
     {
@@ -93,7 +98,7 @@ const formSchema = computed((): VbenFormSchema[] => {
           strengthText: () => $t('authentication.passwordStrength'),
         };
       },
-      rules: z.string().min(1, { message: $t('authentication.passwordTip') }),
+      rules: z.string().min(8, { message: $t('authentication.passwordErrorTip') }),
     },
     {
       component: 'VbenInputPassword',
@@ -107,7 +112,7 @@ const formSchema = computed((): VbenFormSchema[] => {
             .string()
             .min(1, { message: $t('authentication.passwordTip') })
             .refine((value) => value === password, {
-              message: $t('authentication.confirmPasswordTip'),
+              message: $t('authentication.confirmPasswordErrorTip'),
             });
         },
         triggerFields: ['password'],
@@ -139,7 +144,7 @@ const formSchema = computed((): VbenFormSchema[] => {
           ]),
       }),
       rules: z.boolean().refine((value) => !!value, {
-        message: $t('authentication.agreeTip'),
+        message: $t('authentication.agreePolicyErrorTip'),
       }),
     },
   ];
@@ -147,7 +152,12 @@ const formSchema = computed((): VbenFormSchema[] => {
 
 function handleSubmit(value: RegisterParams) {
   value.is_male = value.is_male === 'male';
-  authStore.authRegister(value);
+  authStore.authRegister(value).catch(() => {
+    notification.error({
+      message: $t('authentication.registerError'),
+      duration: 3,
+    });
+  });
 }
 </script>
 

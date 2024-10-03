@@ -30,13 +30,9 @@ export const useAuthStore = defineStore('auth', () => {
     params: LoginParams,
     onSuccess?: () => Promise<void> | void,
   ) {
-    // 异步处理用户登录操作并获取 accessToken
-    const userInfo: null | UserInfo = null;
     try {
       loginLoading.value = true;
       const { id } = await loginApi(params);
-
-      // 如果成功获取到 accessToken
       if (id !== -1) {
         accessStore.setAccessToken(id.toString());
         // 获取用户信息并存储到 accessStore 中
@@ -59,7 +55,15 @@ export const useAuthStore = defineStore('auth', () => {
             message: $t('authentication.loginSuccess'),
           });
         }
+      } else {
+        throw new Error('Login failed');
       }
+    } catch (error) {
+      notification.error({
+        message: $t('authentication.loginError'),
+        duration: 3,
+      });
+      throw error;
     } finally {
       loginLoading.value = false;
     }
@@ -68,17 +72,14 @@ export const useAuthStore = defineStore('auth', () => {
       userInfo,
     };
   }
+
   async function authRegister(
     params: RegisterParams,
     onSuccess?: () => Promise<void> | void,
   ) {
-    // 异步处理用户登录操作并获取 accessToken
-    const userInfo: null | UserInfo = null;
     try {
       loginLoading.value = true;
       const { id } = await registerApi(params);
-
-      // 如果成功获取到 accessToken
       if (id !== -1) {
         accessStore.setAccessToken(id.toString());
         // 获取用户信息并存储到 accessStore 中
@@ -101,7 +102,15 @@ export const useAuthStore = defineStore('auth', () => {
             message: $t('authentication.registerSuccess'),
           });
         }
+      } else {
+        throw new Error('Register failed');
       }
+    } catch (error) {
+      notification.error({
+        message: $t('authentication.registerError'),
+        duration: 3,
+      });
+      throw error;
     } finally {
       loginLoading.value = false;
     }
