@@ -14,9 +14,6 @@ defineOptions({
 });
 
 withDefaults(defineProps<Props>(), {
-  description:
-    '作为一款引领未来教育潮流的综合性智慧平台，深刻洞察并从根本上重塑了学生在校生活的全貌。该平台巧妙融合先进的人工智能大模型，对学生的日常行为与学习轨迹进行深度剖析与智能化引导，开创性地将科技力量注入教育的每一个细微之处。\n我们创新性地引入嵌入智能技术的手表、校服及校徽，集成了GPS与室内蓝牙精确定位系统，构筑起无微不至的安全守护网，实现对学生安全的全天候、无缝隙监控。同时，通过与校园摄像头系统的无缝对接及高级人脸识别技术，我们构建了一个既安全又高效的数字化校园环境，确保每位学生的福祉得到最大化的保障。\n在学习领域，宁静云校园通过精密的数据追踪与分析，为每位学生绘制个性化成长蓝图，精准把握学习动态，助力教育者量身定制教学方案。平台集课程资源、智能统计分析、个性化学习建议于一体，不仅赋能教师精准施教，更为家长开启了一扇全面了解孩子学习进程的窗口。\n更进一步，宁静云校园通过实时校内通讯体系、课程智能提醒、以及高效作业发布与审批流程，极大地提升了教育管理的流畅度与透明度。班费管理模块的加入，则让财务管理变得公开透明，促进了家校间的信任与合作。\n总之，宁静云校园以其前瞻性的设计理念与尖端科技的应用，构建了一个智慧共生的教育生态，不仅重新定义了校园管理的高效与便捷，更为每一位学子的卓越成长铺设了坚实的道路，开启了智慧教育的新纪元。',
-  name: '宁静云校园',
   title: '关于项目',
 });
 
@@ -94,12 +91,42 @@ const devDependenciesItems = Object.keys(devDependencies).map((key) => ({
 <template>
   <Page :title="title">
     <template #description>
-      <p class="text-foreground mt-3 text-sm leading-6">
-        <VbenLink href="/">
-          {{ name }}
-        </VbenLink>
-        {{ description }}
-      </p>
+      <div class="mt-6">
+        <div class="card-box rounded-lg p-5 shadow-md">
+          <h2 class="mb-4 text-3xl font-bold">项目简介</h2>
+          <div class="space-y-4">
+            <div class="rounded p-4 shadow-inner">
+              <h3 class="text-xl font-semibold">未来教育愿景</h3>
+              <p>
+                宁静云校园，致力于成为教育4.0时代的先行者，通过深度融合AI技术与教育实践，为学生打造个性化、智能化的学习体验。我们的愿景是消除学习障碍，激发每个孩子的潜能，促进全球教育公平与质量的双重提升。
+              </p>
+            </div>
+            <div class="rounded p-4 shadow-inner">
+              <h3 class="text-xl font-semibold">核心功能亮点</h3>
+              <ul class="list-inside list-disc">
+                <li>
+                  智能安全监护：集成智能穿戴设备，实现24小时安全定位与异常行为预警。
+                </li>
+                <li>
+                  个性化学习路径：根据学生能力与兴趣定制学习计划，精准推送教育资源。
+                </li>
+                <li>
+                  高效教学管理：一键发布作业与通知，智能评估学习成效，减轻教师负担。
+                </li>
+                <li>
+                  家校互动平台：建立透明的家校沟通桥梁，增进双方理解与合作，共促学生成长。
+                </li>
+              </ul>
+            </div>
+            <div class="rounded p-4 shadow-inner">
+              <h3 class="text-xl font-semibold">技术创新应用</h3>
+              <p>
+                利用大数据分析与机器学习算法，深入分析学生学习习惯与成效，不断优化推荐算法，使教育更加智能化。同时，结合物联网技术，创造沉浸式学习环境，让学生在互动与实践中深化知识掌握。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </template>
     <div class="card-box p-5">
       <div>

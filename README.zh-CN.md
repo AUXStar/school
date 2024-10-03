@@ -15,7 +15,7 @@ Vue Vben Admin 是 Vue Vben Admin 的升级版本。作为一个免费开源的�
 
 ## 升级提示
 
-该版本为最新版本`5.0`, 与其他版本不兼容，如果你是新项目，建议使用最新版本。如果你想查看旧版本，请使用 [v2 分支](https://github.com/vbenjs/vue-vben-admin/tree/v2)
+该版本为最新版本 `5.0`, 与其他版本不兼容，如果你是新项目，建议使用最新版本。如果你想查看旧版本，请使用 [v2 分支](https://github.com/vbenjs/vue-vben-admin/tree/v2)
 
 ## 特性
 
@@ -87,7 +87,7 @@ pnpm build
 2. 创建自己的分支: `git checkout -b feature/xxxx`
 3. 提交你的修改: `git commit -am 'feat(function): add xxxxx'`
 4. 推送您的分支: `git push origin feature/xxxx`
-5. 提交`pull request`
+5. 提交 `pull request`
 
 ## Git 贡献提交规范
 
@@ -108,13 +108,13 @@ pnpm build
 
 ## 浏览器支持
 
-本地开发推荐使用`Chrome 80+` 浏览器
+本地开发推荐使用 `Chrome 80+` 浏览器
 
 支持现代浏览器, 不支持 IE
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :-: | :-: | :-: | :-: | :-: |
-| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+| [`<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />`](http://godban.github.io/browsers-support-badges/)`</br>`IE | [`<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />`](http://godban.github.io/browsers-support-badges/)`</br>`Edge | [`<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />`](http://godban.github.io/browsers-support-badges/)`</br>`Firefox | [`<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />`](http://godban.github.io/browsers-support-badges/)`</br>`Chrome | [`<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />`](http://godban.github.io/browsers-support-badges/)`</br>`Safari |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                                not support                                                                                                |                                                                                               last 2 versions                                                                                               |                                                                                                    last 2 versions                                                                                                    |                                                                                                  last 2 versions                                                                                                  |                                                                                                  last 2 versions                                                                                                  |
 
 ## 维护者
 
@@ -126,7 +126,7 @@ pnpm build
 
 ![donate](https://unpkg.com/@vbenjs/static-source@0.1.6/source/sponsor.png)
 
-<a style="display: block;width: 100px;height: 50px;line-height: 50px; color: #fff;text-align: center; background: #408aed;border-radius: 4px;" href="https://www.paypal.com/paypalme/cvvben">Paypal Me</a>
+`<a style="display: block;width: 100px;height: 50px;line-height: 50px; color: #fff;text-align: center; background: #408aed;border-radius: 4px;" href="https://www.paypal.com/paypalme/cvvben">`Paypal Me`</a>`
 
 ## 更新日志
 
