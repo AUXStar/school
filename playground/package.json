@@ -24,6 +24,8 @@
     "#/*": "./src/*"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@amap/amap-jsapi-types": "^0.0.15",
     "@tanstack/vue-query": "^5.55.4",
     "@vben/access": "workspace:*",
     "@vben/common-ui": "workspace:*",
