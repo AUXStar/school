@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# coding=utf-8
+###
+# @FilePath     : /school_backend/models/user.py
+# @Author       : njzy njzy4688@gmail.com
+# @Date         : 2024-09-14 22:19:14
+# @LastEditors  : njzy njzy4688@gmail.com
+# @LastEditTime : 2024-10-05 17:06:10
+###
 from pony.orm import Required, db_session, sum, Set, Optional
 from decimal import Decimal
 from time import time
@@ -10,19 +19,19 @@ class User(db.Entity):
     realname = Required(str)
     id_card = Required(str)
     phone = Required(str, index=True, unique=True)
-    
-    create_timestamp = Required(int,default=lambda:int(time()))
-    
+
+    create_timestamp = Required(int, default=lambda: int(time()))
+
     class_teacher = Optional("Teacher")
     class_student = Optional("Student")
 
     is_male = Required(bool)
 
-    oa_from = Set('OA',reverse='from_user')
-    oa_to = Set('OA',reverse='to_user')
+    oa_from = Set("OA", reverse="from_user")
+    oa_to = Set("OA", reverse="to_user")
 
-    notice_from = Set('Notice',reverse='from_user')
-    notice_to = Set('Notice',reverse='to_user')
+    notice_from = Set("Notice", reverse="from_user")
+    notice_to = Set("Notice", reverse="to_user")
 
     permission_groups = Set("PermissionGroup", index=True)
 

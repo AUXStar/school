@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# coding=utf-8
+###
+# @FilePath     : /school_backend/models/permission_node.py
+# @Author       : njzy njzy4688@gmail.com
+# @Date         : 2024-09-14 22:19:14
+# @LastEditors  : njzy njzy4688@gmail.com
+# @LastEditTime : 2024-10-05 17:06:54
+###
 from pony.orm import Required, db_session
 
 from .db import db
@@ -11,7 +20,7 @@ class PermissionNode(db.Entity):
 
     @classmethod
     @db_session
-    def instance(cls, permission:str, value:bool, owner:PermissionGroup):
+    def instance(cls, permission: str, value: bool, owner: PermissionGroup):
         result = cls.get(permission=permission, owner=owner)
         if result is None:
             if value is None:

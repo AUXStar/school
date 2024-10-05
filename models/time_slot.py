@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# coding=utf-8
+###
+# @FilePath     : /school_backend/models/time_slot.py
+# @Author       : njzy njzy4688@gmail.com
+# @Date         : 2024-09-19 13:23:11
+# @LastEditors  : njzy njzy4688@gmail.com
+# @LastEditTime : 2024-10-05 17:06:25
+###
 from typing import Self
 
 from pony.orm import Required, Set, db_session, Optional, select

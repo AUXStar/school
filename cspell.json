@@ -4,6 +4,7 @@
     "fastapi",
     "pydantic",
     "realname",
+    "njzy",
     "starlette"
   ]
 }
